@@ -1,0 +1,27 @@
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        char[] merged = new char[word1.length() + word2.length()];
+        char[] word1Array = word1.toCharArray();
+        char[] word2Array = word2.toCharArray();
+
+        int i = 0, j = 0, k = 0;
+
+        while (i < word1.length() && j < word2.length()) {
+            merged[k++] = word1Array[i++];
+            merged[k++] = word2Array[j++];
+        }
+
+        // If there are remaining characters in word1, append them
+        while (i < word1.length()) {
+            merged[k++] = word1Array[i++];
+        }
+
+        // If there are remaining characters in word2, append them
+        while (j < word2.length()) {
+            merged[k++] = word2Array[j++];
+        }
+
+        // Convert char[] to String
+        return new String(merged);
+    }
+}
